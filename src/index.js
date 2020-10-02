@@ -1,12 +1,36 @@
-module.exports = function toReadable (number) {
-  let result = "";
-  let numbers = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
-  let teen = ["eleven", "twelve", "teen"];
-  let tens = ["ten","twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"]
-  let bigNumbers = ["hundred", "thousand", "million", "billion"]
+module.exports = function toReadable(number) {
+    let result = "";
+    let numbers = {
+        0: "zero",
+        1: "one",
+        2: "two",
+        3: "three",
+        4: "four",
+        5: "five",
+        6: "six",
+        7: "seven",
+        8: "eight",
+        9: "nine",
+    };
+    let tens = {
+        10: "ten",
+        20: "twenty",
+        30: "thirty",
+        40: "forty",
+        50: "fifty",
+        60: "sixty",
+        70: "seventy",
+        80: "eighty",
+        90: "ninety",
+    };
+    let addition = {
+        11: "eleven",
+        12: "twelve",
+        teen: "teen",
+        hundred: "hundred",
+    };
 
-  if (number.length > 9) result += "!!!!!!" + bigNumbers[3]
-  return number;
-
-  /*вместо массивов объект и сравнивать поля?*/
-}
+    if (number <= 10) {
+        return (result += numbers[number]);
+    }
+};
