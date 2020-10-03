@@ -19,6 +19,7 @@ module.exports = function toReadable(number) {
       12: "twelve",
       13: "thirteen",
       15: "fifteen",
+      18: "eighteen",
   };
     let tens = {
         1: "ten",
@@ -45,8 +46,9 @@ module.exports = function toReadable(number) {
       if(number === 12) return result += teens[number];
       if(number === 13) return result += teens[number];
       if(number === 15) return result += teens[number];
+      if(number === 18) return result += teens[number];
       if(numberStr[0] === "1") {
-        return result += numbers[numberStr[1]] + addition.teen;
+        return result += numbers[numberStr[1]] + teens.teen;
       }
       return result += tens[numberStr[0]] + " " + numbers[numberStr[1]];      
     }
@@ -58,11 +60,15 @@ module.exports = function toReadable(number) {
         if(numberStr[2] === 12)  result += teens[number];
         if(numberStr[2] === 13)  result += teens[number];
         if(numberStr[2] === 15)  result += teens[number];
-        else result += numbers[numberStr[2]] + addition.teen;
+        if(numberStr.substring(1,2) === "18")  result += teens[number];
+        else result += " " + numbers[numberStr[2]] + teens.teen;
       }
+      else {
       if(numberStr[1] !== "0") result += " " + tens[numberStr[1]];
       if(numberStr[2] !== "0")  result +=  " " + numbers[numberStr[2]];
+      }
       return result;
     }
 
 };
+
